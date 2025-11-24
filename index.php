@@ -66,5 +66,5 @@ $myurl .= "://";
 $myurl .= $_SERVER['HTTP_HOST'];
 $myurl .= $_SERVER['REQUEST_URI'];
 ?>
-<span class="footer">This document is <a href="http://validator.w3.org/check?uri=<?php echo $myurl; ?>">HTML5</a> and <a href="https://jigsaw.w3.org/css-validator/validator?uri=<?php echo $myurl; ?>">CSS3</a> valid &bull; Coding by Zion</span>
+<span class="footer">This document is <a href="http://validator.w3.org/check?uri=<?php echo htmlspecialchars($myurl); ?>">HTML5</a> and <a href="https://jigsaw.w3.org/css-validator/validator?uri=<?php echo htmlspecialchars($myurl); ?>">CSS3</a> valid &bull; Coding by Zion</span>
 </body></html>
