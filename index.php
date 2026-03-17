@@ -11,15 +11,15 @@ $tz = date_default_timezone_get();
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 <title>Current time in <?php echo $tz; ?></title>
 <link rel="stylesheet" href="style.css">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-PGNFWNZT71"></script>
-<script>
+<!-- Make sure you replace YOUR_TAG_HERE with your own Google Analytics measurement ID -->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_TAG_HERE"></script> -->
+<!-- <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-// Make sure you change the 'config' ID to your own Google Analytics measurement ID
-  gtag('config', 'G-PGNFWNZT71');
+  gtag('config', 'YOUR_TAG_HERE');
 </script>
+  -->
 </head>
 <body>
 <script>
@@ -29,13 +29,12 @@ var currenttime = "<?php print date('d F Y H:i:s', time() )?>";
 // We always display in the user's locale
 var locale = navigator.language || navigator.userLanguage;
 var montharray = [];
+
 for (var i = 0; i < 12; i++) {
     var date = new Date(2000, i, 1); // year doesn't matter
     var monthName = new Intl.DateTimeFormat(locale, { month: 'long' }).format(date);
     montharray.push(monthName);
 }
-
-
 // var montharray = ["Ianuarie","Februarie","Martie","Aprilie","Mai","Iunie","Iulie","August","Septembrie","Octombrie","Noiembrie","Decembrie"];
 var serverdate = new Date(currenttime);
 
@@ -43,14 +42,12 @@ function padlength(what){
   var output=(what.toString().length==1)? "0"+what : what
   return output
 }
-
 function displaytime(){
   serverdate.setSeconds(serverdate.getSeconds()+1)
   var datestring=padlength(serverdate.getDate())+" "+montharray[serverdate.getMonth()]+" "+serverdate.getFullYear()
   var timestring=padlength(serverdate.getHours())+":"+padlength(serverdate.getMinutes())+":"+padlength(serverdate.getSeconds())
   document.getElementById("servertime").innerHTML=datestring+" "+timestring
 }
-
 window.onload=function(){
   setInterval("displaytime()", 1000)
 }
